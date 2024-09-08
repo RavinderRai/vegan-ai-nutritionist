@@ -1571,6 +1571,20 @@ files = [
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "pymed"
+version = "0.8.9"
+description = "Python library for access to PubMed"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pymed-0.8.9-py3-none-any.whl", hash = "sha256:bdd65ebd6448cc05d6d6134d53b38f8f0b77c0734fc40c33976656799168ae03"},
+    {file = "pymed-0.8.9.tar.gz", hash = "sha256:3523b9655c39d2caef1c25582f29d0687ea269728d1b90b5e28e9c6b2dbff538"},
+]
+
+[package.dependencies]
+requests = ">=2.20.0"
+
+[[package]]
 name = "pypdf2"
 version = "3.0.1"
 description = "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files"
@@ -1601,6 +1615,20 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
+
+[[package]]
+name = "python-dotenv"
+version = "1.0.1"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca"},
+    {file = "python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
 
 [[package]]
 name = "python-json-logger"
@@ -2321,4 +2349,4 @@ test = ["websockets"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5deb43b88935302f1bc26b2d3bde8283133f519a237e168a865309e0b2ba3612"
+content-hash = "5bddb18586a43db67720600b78db95ada9baeb99a42d3783202f03a2a101145b"
