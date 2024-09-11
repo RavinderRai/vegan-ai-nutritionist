@@ -1,7 +1,11 @@
 import requests
 import xml.etree.ElementTree as ET
 
-def get_full_text(doi, api_key, base_url="http://api.springernature.com/openaccess/jats"):
+def get_full_text(
+    doi: str, 
+    api_key: str, 
+    base_url: str ="http://api.springernature.com/openaccess/jats"
+):
     """
     Retrieves the full text content of a journal article given its DOI and API key.
 

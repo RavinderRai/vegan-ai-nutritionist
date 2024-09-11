@@ -1,1 +1,7 @@
 .env
+
+infra/s3/terraform.tfvars
+infra/s3/terraform.tfstate
+infra/s3/terraform.tfstate.backup
+infra/s3/.terraform.lock.hcl
+infra/s3/.terraform/
