@@ -70,8 +70,8 @@ def get_paper_data(
     """This function collects meta data for papers that match the query from the Springer Nature API.
 
     Args:
-        query (_type_): _description_
-        api_key (_type_): _description_
+        query (str): Description of what kind of papers you want to collect.
+        api_key (str): Springer Nature API Key. Note: there is a free version and a premium version.
         base_url (str, optional): The endpoint of the Springer Nature API to get meta data. 
             Defaults to "http://api.springernature.com/openaccess/json".
         starting_record (int, optional): The starting record number. Defaults to 1.
@@ -79,7 +79,7 @@ def get_paper_data(
             Defaults to 25, and floors to 25 if set higher.
 
     Returns:
-        _type_: A list of meta data dictionaries for papers that match the query.
+        list: A list of meta data dictionaries for papers that match the query.
     """
     if starting_record < 1:
         raise ValueError("starting_record must be greater than or equal to 1")
