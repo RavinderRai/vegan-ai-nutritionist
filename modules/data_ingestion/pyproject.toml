@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "data-ingestion"
 version = "0.1.0"
-description = "Module for collecting raw data, in this case being papers about vegan or plant-based diets."
+description = "Environment for collecting raw data, in this case being papers about vegan or plant-based diets."
 authors = ["Ravinder Rai"]
 readme = "README.md"
 

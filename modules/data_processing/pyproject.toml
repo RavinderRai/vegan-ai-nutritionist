@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "data-processing"
+version = "0.1.0"
+description = "Environment for processing text data and storing it in a vector database."
+authors = ["Ravinder Rai"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+boto3 = "^1.35.17"
+python-dotenv = "^1.0.1"
+pandas = "^2.2.2"
+jupyter = "^1.1.1"
+notebook = "^7.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -5,3 +5,10 @@ infra/s3/terraform.tfstate
 infra/s3/terraform.tfstate.backup
 infra/s3/.terraform.lock.hcl
 infra/s3/.terraform/
+
+modules/__pycache__/
+modules/utils/__pycache__/
+modules/data_ingestion/__pycache__/
+modules/data_ingestion/src/__pycache__/
+modules/data_processing/__pycache__/
+modules/data_processing/src/__pycache__/
