@@ -8,4 +8,10 @@ To use these notebooks, you can reuse the poetry environments defined in the res
 poetry shell
 ```
 
-to start the environment. Then execute the command `jupyter notebook`. Next click on the `Select Kernel` button at the top right, and select `Existing Jupyter Server...`. Finally copy and paste the localhost link in there and hit enter.
+to start the environment. Now make sure `notebook` and `ipykernel` are installed in your poetry env, and then execute the command:
+
+```bash
+poetry run python -m ipykernel install --user --name=poetry-env --display-name "replace_with_env_name" 
+```
+
+Next run `jupyter notebook` to get a localhost link, and click on the `Select Kernel` button at the top right. Finally, select `Existing Jupyter Server...` and copy and paste the localhost link in there and hit enter.
