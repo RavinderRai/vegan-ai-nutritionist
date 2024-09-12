@@ -1,5 +1,8 @@
 import requests
 import xml.etree.ElementTree as ET
+from ...utils.logger import setup_logger
+
+logger = setup_logger("springer_api_client", "data_ingestion.log")
 
 def fetch_paper_meta_data(
     query: str, 
@@ -8,7 +11,7 @@ def fetch_paper_meta_data(
     starting_record: int = 1, 
     max_records: int = 25
 ): 
-    
+
     """
     Retrieves the meta data for papers that match the query from the Springer Nature API.
 
@@ -27,8 +30,10 @@ def fetch_paper_meta_data(
     """
     if starting_record < 1:
         starting_record = 1
+        logger.info("Recieved a value less than 1 for starting_record, setting it to 1.")
     if not 1 <= max_records <= 25:
         max_records = 25
+        logger.info("Recieved a value not between 1 and 25 for max_records, setting it to 25.")
     
     params = {
         "q": query,
@@ -37,6 +42,7 @@ def fetch_paper_meta_data(
         "p": max_records,
     }
     
+    logger.info(f"Requesting paper meta data.")
     response = requests.get(base_url, params=params)
     response.raise_for_status()
     
@@ -61,6 +67,8 @@ def fetch_full_text(
         If the request fails, returns an error message.
     """
     
+    logger.info(f"Fetching full text for DOI: {doi}.")
+    
     params = {
         "q": doi,
         "api_key": api_key
@@ -69,6 +77,8 @@ def fetch_full_text(
     response = requests.get(base_url, params=params)
     response.raise_for_status()
     
+    logger.info("Successfully retrieved the full text.")
+    
     xml_content = response.content
     root = ET.fromstring(xml_content)
 
@@ -76,6 +86,7 @@ def fetch_full_text(
     body_section = root.find(".//body")
     
     if body_section is not None:
+        logger.info("Found a body section in the XML, now extracting content.")
         for section in body_section.findall(".//sec"):
             section_title = section.find("title")
             section_title_text = section_title.text if section_title is not None else ""
@@ -92,4 +103,7 @@ def fetch_full_text(
                     }
             )
     
+    logger.info("Returning the full text.")
+    
     return full_text
+

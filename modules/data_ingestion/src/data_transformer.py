@@ -1,4 +1,7 @@
 from .springer_api_client import fetch_paper_meta_data, fetch_full_text
+from ...utils.logger import setup_logger
+
+logger = setup_logger("data_transformer", "data_ingestion.log")
 
 def transform_paper_data(
     query: str, 
@@ -27,6 +30,7 @@ def transform_paper_data(
     papers_data = []
     results = fetch_paper_meta_data(query, api_key, base_url, starting_record, max_records)
     
+    logger.info("Retrieved meta data for papers, now saving them alongside the full pdf text.")
     for record in results.get("records", []):
         if record.get("openAccess"):
             meta_data = {

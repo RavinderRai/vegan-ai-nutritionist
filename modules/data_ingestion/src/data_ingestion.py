@@ -1,11 +1,15 @@
 import os
 import time
 import numpy as np
+from dotenv import load_dotenv, find_dotenv
+
 from .data_transformer import transform_paper_data
 from .s3_storage import upload_to_s3
-from dotenv import load_dotenv
+from ...utils.logger import setup_logger
 
-load_dotenv()
+logger = setup_logger("data_ingestion", "data_ingestion.log")
+
+load_dotenv(find_dotenv())
 
 def ingest_data(
     query: str,
@@ -33,6 +37,8 @@ def ingest_data(
     """
     all_data = []
 
+    logger.info(f"Starting ingestion with {total_records} records. Expect 1 minutes per 75 records.")
+    
     for i in np.arange(1, total_records, max_records):
         data_batch = transform_paper_data(query, api_key, base_url, i, max_records)
         all_data.extend(data_batch)
@@ -42,17 +48,20 @@ def ingest_data(
         if total_records > 78:  # Avoid rate limiting
             time.sleep(20)
     
+    logger.info("Data ingestion completed. Uploading to S3 bucket")
     upload_to_s3(data=all_data, bucket_name=bucket_name, file_name=file_name)
+    logger.info("Data uploaded to S3 bucket")
 
 
 if __name__ == "__main__":
-    # Replace with appropriate values for your API key, bucket, etc.
-    QUERY = "vegan nutrition"
+    QUERY = input("Enter the query (default: 'vegan nutrition'): ") or "vegan OR plant-based"
     API_KEY = os.environ.get("SPRINGER_NATURE_API")
     BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME')
-    TOTAL_RECORDS = 100
+    TOTAL_RECORDS = input("Enter the total number of records (default: 100): ") or 100
+    TOTAL_RECORDS = int(TOTAL_RECORDS)
     MAX_RECORDS = 25
-    FILE_NAME = "raw_pdf_data.json"
+    FILE_NAME = input("Enter the file name for storing the data (default: raw_pdf_data.json): ") or "raw_pdf_data.json"
+
 
     # Call the main ingestion function with the provided values
     ingest_data(
