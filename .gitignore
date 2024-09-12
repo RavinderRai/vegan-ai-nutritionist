@@ -1,10 +1,16 @@
 .env
 
-infra/s3/terraform.tfvars
-infra/s3/terraform.tfstate
-infra/s3/terraform.tfstate.backup
-infra/s3/.terraform.lock.hcl
-infra/s3/.terraform/
+infra/data_ingestion/terraform.tfvars
+infra/data_ingestion/terraform.tfstate
+infra/data_ingestion/terraform.tfstate.backup
+infra/data_ingestion/.terraform.lock.hcl
+infra/data_ingestion/.terraform/
+
+infra/data_processing/terraform.tfvars
+infra/data_processing/terraform.tfstate
+infra/data_processing/terraform.tfstate.backup
+infra/data_processing/.terraform.lock.hcl
+infra/data_processing/.terraform/
 
 modules/__pycache__/
 modules/utils/__pycache__/
