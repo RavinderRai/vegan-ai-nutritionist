@@ -7,7 +7,6 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-boto3 = "^1.35.17"
 python-dotenv = "^1.0.1"
 pandas = "^2.2.2"
 notebook = "^7.2.2"
@@ -17,6 +16,8 @@ langchain = "^0.2.16"
 huggingface-hub = "^0.24.7"
 langchain-community = "^0.2.16"
 sentence-transformers = "^3.1.0"
+boto3 = "1.34.131"
+langchain-aws = "^0.1.18"
 
 
 [tool.poetry.group.dev.dependencies]
