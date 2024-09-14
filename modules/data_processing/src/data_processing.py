@@ -24,6 +24,9 @@ def data_processing(
     data = load_data_from_s3(AWS_BUCKET_NAME)
     logger.info("Data loaded successfully from S3.")
     
+    #only load first 50 papers
+    data = data[0:50]
+    
     full_data = get_full_data(data)
     logger.info("Full data aggregation complete.")
     
@@ -32,6 +35,11 @@ def data_processing(
     
     chunked_docs = chunk_doc(documents)
     logger.info("Chunking documents complete.")
+    
+    #if need to reduce further here
+    #num_of_chunked_docs = len(chunked_docs)
+    #logger.info("Number of chuned documents: %s", num_of_chunked_docs) # len(chunked_docs)
+    #chunked_docs = chunked_docs[0:num_of_chunked_docs//2]
 
     logger.info("Initializing Bedrock embedding...")
     bedrock_embedding = get_bedrock_embeddings()

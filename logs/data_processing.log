@@ -38,3 +38,45 @@
 2024-09-14 12:36:11,495 - data_processing - INFO - Chunking documents complete.
 2024-09-14 12:36:11,496 - data_processing - INFO - Initializing Bedrock embedding...
 2024-09-14 12:36:11,553 - data_processing - INFO - Generating embeddings...
+2024-09-14 13:40:24,023 - data_processing - INFO - Starting main data processing function.
+2024-09-14 13:40:25,299 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 13:40:25,309 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 13:40:25,341 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 13:40:26,446 - data_processing - INFO - Chunking documents complete.
+2024-09-14 13:40:26,447 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 13:40:26,458 - data_processing - INFO - Generating embeddings...
+2024-09-14 13:41:18,516 - data_processing - INFO - Starting main data processing function.
+2024-09-14 13:41:20,114 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 13:41:20,120 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 13:41:20,152 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 13:41:21,211 - data_processing - INFO - Chunking documents complete.
+2024-09-14 13:41:21,212 - data_processing - INFO - Number of documents chunked: 4907
+2024-09-14 13:41:21,213 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 13:41:21,265 - data_processing - INFO - Generating embeddings...
+2024-09-14 13:43:15,871 - data_processing - INFO - Starting main data processing function.
+2024-09-14 13:43:17,081 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 13:43:17,087 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 13:43:17,119 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 13:43:18,181 - data_processing - INFO - Chunking documents complete.
+2024-09-14 13:43:18,183 - data_processing - INFO - Number of chuned documents: 4907
+2024-09-14 13:43:18,185 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 13:43:18,251 - data_processing - INFO - Generating embeddings...
+2024-09-14 13:47:41,298 - data_processing - INFO - Index 'vegan_papers_index' created successfully.
+2024-09-14 13:49:39,921 - data_processing - INFO - Starting main data processing function.
+2024-09-14 13:49:41,621 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 13:49:41,626 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 13:49:41,634 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 13:49:41,926 - data_processing - INFO - Chunking documents complete.
+2024-09-14 13:49:41,927 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 13:49:41,937 - data_processing - INFO - Generating embeddings...
+2024-09-14 13:51:34,995 - data_processing - INFO - Index 'vegan_papers_index' created successfully.
+2024-09-14 13:54:35,826 - data_processing - INFO - Starting main data processing function.
+2024-09-14 13:54:37,413 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 13:54:37,416 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 13:54:37,424 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 13:54:37,729 - data_processing - INFO - Chunking documents complete.
+2024-09-14 13:54:37,730 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 13:54:37,739 - data_processing - INFO - Generating embeddings...
+2024-09-14 13:56:33,557 - data_processing - INFO - Index 'vegan_papers_index' created successfully.
+2024-09-14 13:56:38,084 - data_processing - INFO - Indexed 62 documents into index 'vegan_papers_index'.
+2024-09-14 13:56:38,088 - data_processing - INFO - Finished data processing pipeline.

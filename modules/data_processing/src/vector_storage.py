@@ -40,23 +40,37 @@ def create_index(client, index_name, embedding_dimension):
 
 
 
-def index_documents(client, index_name, documents_with_embeddings):
-    actions = []
-    
-    logger.info(f"Indexing {len(documents_with_embeddings)} documents into index '{index_name}'.")
-    
-    for i, doc in enumerate(documents_with_embeddings):
-        action = {
-            '_index': index_name,
-            '_id': i,
-            '_source': {
-                'embedding': doc['embedding'],
-                'text': doc['text'],
-                'metadata': doc['metadata']
+
+def index_documents(client, index_name, documents_with_embeddings, batch_size=500):
+    total_documents = len(documents_with_embeddings)
+    logger.info(f"Indexing {total_documents} documents into index '{index_name}' with batch size {batch_size}.")
+
+    success_count = 0
+    failure_count = 0
+
+    for i in range(0, total_documents, batch_size):
+        batch = documents_with_embeddings[i:i + batch_size]
+        actions = []
+        for j, doc in enumerate(batch):
+            action = {
+                '_index': index_name,
+                '_id': i + j,  # Ensure unique IDs across batches
+                '_source': {
+                    'embedding': doc['embedding'],
+                    'text': doc['text'],
+                    'metadata': doc['metadata']
+                }
             }
-        }
-        actions.append(action)
-    
-    success, _ = bulk(client, actions)
-    
-    return success
+            actions.append(action)
+
+        try:
+            success, failed = bulk(client, actions)
+            success_count += success
+            failure_count += len(failed)
+            logger.info(f"Indexed batch {i // batch_size + 1}: {success} successes, {len(failed)} failures.")
+        except Exception as e:
+            logger.error(f"Error indexing batch {i // batch_size + 1}: {e}")
+            # Optionally, implement retry logic here
+
+    logger.info(f"Finished indexing. Total successes: {success_count}, Total failures: {failure_count}.")
+    return success_count
