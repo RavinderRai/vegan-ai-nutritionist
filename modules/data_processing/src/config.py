@@ -1,3 +1,5 @@
+INDEX_NAME = 'vegan_papers_index'
+
 INDEX_BODY = {
     'settings': {
         'index': {

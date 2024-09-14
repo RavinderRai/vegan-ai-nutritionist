@@ -1,9 +1,9 @@
 import boto3
 from langchain_aws import BedrockEmbeddings
 
-from ...utils.logger import setup_logger
+import logging
 
-logger = setup_logger("embeddings", "data_processing.log")
+logger = logging.getLogger(__name__)
 
 def get_bedrock_embeddings(model_id: str = "amazon.titan-embed-text-v1"):
     """
@@ -18,7 +18,7 @@ def get_bedrock_embeddings(model_id: str = "amazon.titan-embed-text-v1"):
         BedrockEmbeddings: A client that can interact with the Bedrock embeddings
             service.
     """
-
+    logger.info(f"Initializing BedrockEmbeddings with model_id: {model_id}")
     bedrock = boto3.client(service_name="bedrock-runtime")
     
     bedrock_embeddings = BedrockEmbeddings(
@@ -40,6 +40,7 @@ def generate_embeddings(documents, bedrock_embeddings):
     Returns:
         list[dict]: A list of documents where each document has the embedding included as a key.
     """
+    logger.info("Generating embeddings for documents...")
     texts = [doc.page_content for doc in documents]
     
     embeddings = bedrock_embeddings.embed_documents(texts)
@@ -54,4 +55,5 @@ def generate_embeddings(documents, bedrock_embeddings):
         }
         documents_with_embeddings.append(doc_with_embedding)
     
+    logger.info("Embeddings generated successfully.")
     return documents_with_embeddings

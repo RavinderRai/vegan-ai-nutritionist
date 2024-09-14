@@ -1,0 +1,40 @@
+2024-09-14 11:46:28,821 - data_processing - INFO - Starting main data processing function.
+2024-09-14 11:49:19,411 - data_processing - INFO - Starting main data processing function.
+2024-09-14 11:49:19,418 - data_processing - ERROR - The following environment variables are not set: AWS_ACCESS_KEY, AWS_SECRET_KEY
+2024-09-14 11:49:53,901 - data_processing - INFO - Starting main data processing function.
+2024-09-14 11:50:53,430 - data_processing - INFO - Starting main data processing function.
+2024-09-14 11:54:58,861 - data_processing - INFO - Starting main data processing function.
+2024-09-14 12:03:04,493 - data_processing - INFO - Starting main data processing function.
+2024-09-14 12:12:01,741 - data_processing - INFO - Starting main data processing function.
+2024-09-14 12:12:03,133 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 12:12:03,139 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 12:12:03,171 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 12:12:04,205 - data_processing - INFO - Chunking documents complete.
+2024-09-14 12:12:04,206 - data_processing - INFO - Initializing Bedrock embedding.
+2024-09-14 12:13:56,971 - data_processing - INFO - Starting main data processing function.
+2024-09-14 12:14:00,660 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 12:14:00,666 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 12:14:00,698 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 12:14:01,761 - data_processing - INFO - Chunking documents complete.
+2024-09-14 12:14:01,762 - data_processing - INFO - Initializing Bedrock embedding.
+2024-09-14 12:14:48,822 - data_processing - INFO - Starting main data processing function.
+2024-09-14 12:14:50,035 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 12:14:50,042 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 12:14:50,076 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 12:14:51,116 - data_processing - INFO - Chunking documents complete.
+2024-09-14 12:14:51,117 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 12:14:51,169 - data_processing - INFO - Generating embeddings...
+2024-09-14 12:35:42,686 - data_processing - INFO - Starting main data processing function.
+2024-09-14 12:35:47,046 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 12:35:47,052 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 12:35:47,085 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 12:35:48,122 - data_processing - INFO - Chunking documents complete.
+2024-09-14 12:35:48,124 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 12:35:48,176 - data_processing - INFO - Generating embeddings...
+2024-09-14 12:36:09,032 - data_processing - INFO - Starting main data processing function.
+2024-09-14 12:36:10,410 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-14 12:36:10,417 - data_processing - INFO - Full data aggregation complete.
+2024-09-14 12:36:10,449 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-14 12:36:11,495 - data_processing - INFO - Chunking documents complete.
+2024-09-14 12:36:11,496 - data_processing - INFO - Initializing Bedrock embedding...
+2024-09-14 12:36:11,553 - data_processing - INFO - Generating embeddings...

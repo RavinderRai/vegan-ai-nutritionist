@@ -1,9 +1,8 @@
 from langchain.docstore.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+import logging
 
-from ...utils.logger import setup_logger
-
-logger = setup_logger("data_transformer", "data_processing.log")
+logger = logging.getLogger(__name__)
 
 def transform_paper_data(pdf_data: dict) -> list:
     """
@@ -16,7 +15,7 @@ def transform_paper_data(pdf_data: dict) -> list:
     Returns:
         list: A list of dictionaries, where each dictionary contains the text of one section of the paper and the meta data of the paper with the section added to it.
     """
-
+    logger.info("Transforming pdf data, moving section to meta data.")
     pdf_content, original_meta_data = pdf_data['content'], pdf_data['meta_data']
     
     updated_data = []
@@ -30,28 +29,31 @@ def transform_paper_data(pdf_data: dict) -> list:
         
         updated_data.append({'body': body, 'meta_data': meta_data})
         
+    logger.info("Data transformed successfully.")
     return updated_data
 
 def get_full_data(data):
+    logger.info("Aggregating full data from all PDFs...")
     full_pdf_data = []
 
     for pdf_data in data:
-        pdf_content_text = pdf_data['content']
-        og_meta_data = pdf_data['meta_data']
-        
-        full_pdf_data += transform_paper_data(pdf_content_text, og_meta_data)
+        full_pdf_data += transform_paper_data(pdf_data)
     
+    logger.info("Full data aggregation complete.")
     return full_pdf_data
 
 
 def convert_to_doc_format(transformed_data):
+    logger.info("Converting transformed data into Langchain Document format.")
     documents = []
     for content in transformed_data:
         doc = Document(page_content=content['body'], metadata=content['meta_data'])
         documents.append(doc)
+    
+    logger.info("Conversion to Document format complete.")
     return documents
 
-def chunk_text(document, chunk_size=10000, chunk_overlap=1000):
+def chunk_text(document, chunk_size=5000, chunk_overlap=500):
     raw_text = document.page_content
     meta_data = document.metadata
     
@@ -66,6 +68,7 @@ def chunk_text(document, chunk_size=10000, chunk_overlap=1000):
     return docs
 
 def chunk_doc(document, chunk_size=10000, chunk_overlap=1000):
+    logger.info("Chunking documents...")
     chunked_docs = []
     
     for doc in document:

@@ -1,10 +1,9 @@
 import json
 import boto3
+import logging
 from typing import List, Dict
 
-from ...utils.logger import setup_logger
-
-logger = setup_logger("data_loading", "data_processing.log")
+logger = logging.getLogger(__name__)
 
 def load_data_from_s3(
     bucket_name: str, 
@@ -32,7 +31,18 @@ def load_data_from_s3(
         )
     
     data = json.loads(response['Body'].read())
-    
+    logger.info("Data loaded successfully from S3.")
     return data
 
 
+if __name__ == "__main__":
+    import os
+    from dotenv import load_dotenv, find_dotenv
+    load_dotenv(find_dotenv())
+    
+    AWS_BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME')
+    
+    data = load_data_from_s3(AWS_BUCKET_NAME)
+    
+    print(data[0])
+    

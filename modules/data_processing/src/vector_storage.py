@@ -2,14 +2,15 @@ from opensearchpy import OpenSearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
 from opensearchpy.exceptions import NotFoundError
 from opensearchpy.helpers import bulk
+import logging
 
-from config import INDEX_BODY
-from ...utils.logger import setup_logger
+from .config import INDEX_BODY
 
-logger = setup_logger("vector_storage", "data_processing.log")
+logger = logging.getLogger(__name__)
 
 def opensearch_client(OPENSEARCH_ENDPOINT, AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_REGION):
     awsauth = AWS4Auth(AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_REGION, 'es')
+    logger.info("Initializing OpenSearch client...")
     
     client = OpenSearch(
         hosts=[{'host': OPENSEARCH_ENDPOINT, 'port': 443}],
@@ -18,7 +19,7 @@ def opensearch_client(OPENSEARCH_ENDPOINT, AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_R
         verify_certs=True,
         connection_class=RequestsHttpConnection
     )
-    
+
     return client
 
 
@@ -41,6 +42,8 @@ def create_index(client, index_name, embedding_dimension):
 
 def index_documents(client, index_name, documents_with_embeddings):
     actions = []
+    
+    logger.info(f"Indexing {len(documents_with_embeddings)} documents into index '{index_name}'.")
     
     for i, doc in enumerate(documents_with_embeddings):
         action = {
