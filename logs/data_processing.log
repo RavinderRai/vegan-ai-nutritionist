@@ -80,3 +80,40 @@
 2024-09-14 13:56:33,557 - data_processing - INFO - Index 'vegan_papers_index' created successfully.
 2024-09-14 13:56:38,084 - data_processing - INFO - Indexed 62 documents into index 'vegan_papers_index'.
 2024-09-14 13:56:38,088 - data_processing - INFO - Finished data processing pipeline.
+2024-09-19 19:50:49,748 - data_processing - INFO - Starting main data processing function.
+2024-09-19 19:50:51,503 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-19 19:50:51,507 - data_processing - INFO - Full data aggregation complete.
+2024-09-19 19:50:51,512 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-19 19:51:13,841 - data_processing - INFO - Starting main data processing function.
+2024-09-19 19:51:15,229 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-19 19:51:15,232 - data_processing - INFO - Full data aggregation complete.
+2024-09-19 19:51:15,237 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-19 21:34:05,128 - data_processing - INFO - Starting main data processing function.
+2024-09-19 21:34:07,026 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-19 21:34:07,030 - data_processing - INFO - Full data aggregation complete.
+2024-09-19 21:34:07,035 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-19 21:58:55,631 - data_processing - INFO - Starting main data processing function.
+2024-09-19 21:58:57,534 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-19 21:58:57,539 - data_processing - INFO - Full data aggregation complete.
+2024-09-19 21:58:57,544 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-19 22:13:32,219 - data_processing - INFO - Starting main data processing function.
+2024-09-19 22:13:34,179 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-19 22:13:34,182 - data_processing - INFO - Full data aggregation complete.
+2024-09-19 22:13:34,187 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-19 22:13:35,484 - data_processing - INFO - Chunking documents complete.
+2024-09-19 22:14:52,441 - data_processing - INFO - Starting main data processing function.
+2024-09-19 22:14:54,352 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-19 22:14:54,356 - data_processing - INFO - Full data aggregation complete.
+2024-09-19 22:14:54,360 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-19 22:15:12,419 - data_processing - INFO - Chunking documents complete.
+2024-09-19 22:15:12,421 - data_processing - INFO - Total time elapsed: 18.05929160118103
+2024-09-19 22:15:54,024 - data_processing - INFO - Starting main data processing function.
+2024-09-19 22:15:56,237 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-19 22:15:56,241 - data_processing - INFO - Full data aggregation complete.
+2024-09-19 22:15:56,246 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-19 22:16:15,751 - data_processing - INFO - Chunking documents complete.
+2024-09-19 22:16:15,752 - data_processing - INFO - Initializing embedding model...
+2024-09-19 22:16:18,296 - data_processing - INFO - Generating embeddings...
+2024-09-19 22:16:24,210 - data_processing - INFO - Index 'vegan_papers_index' created successfully.
+2024-09-19 22:16:27,438 - data_processing - INFO - Indexed 80 documents into index 'vegan_papers_index'.
+2024-09-19 22:16:27,439 - data_processing - INFO - Finished data processing pipeline.

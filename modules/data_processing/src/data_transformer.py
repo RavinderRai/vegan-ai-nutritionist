@@ -1,3 +1,5 @@
+from typing import List, Callable
+from transformers import AutoTokenizer
 from langchain.docstore.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import logging
@@ -54,6 +56,19 @@ def convert_to_doc_format(transformed_data):
     return documents
 
 def chunk_text(document, chunk_size=5000, chunk_overlap=500):
+    """
+    Chunk text into smaller pieces based on a given chunk size and overlap.
+    Chunks by text/string, not tokens.
+
+    Args:
+        document (Document): The document to be chunked.
+        chunk_size (int): The size of each chunk in characters. Defaults to 5000.
+        chunk_overlap (int): The overlap between each chunk in characters. Defaults to 500.
+
+    Returns:
+        List[Document]: The list of documents created by chunking the input document.
+    """
+
     raw_text = document.page_content
     meta_data = document.metadata
     
@@ -67,11 +82,59 @@ def chunk_text(document, chunk_size=5000, chunk_overlap=500):
     
     return docs
 
-def chunk_doc(document, chunk_size=10000, chunk_overlap=1000):
-    logger.info("Chunking documents...")
-    chunked_docs = []
+
+def chunk_doc(documents: List[Document], chunk_size: int = 10000, chunk_overlap: int = 1000) -> List[Document]:
+    """
+    Chunk a list of documents into smaller documents based on a given chunk size and overlap.
+    Uses the chunk_text funtion, meant to chunk the full dataset.
+
+    Args:
+        documents (List[Document]): The list of documents to be chunked.
+        chunk_size (int): The size of each chunk in characters. Defaults to 10000.
+        chunk_overlap (int): The overlap between each chunk in characters. Defaults to 1000.
+
+    Returns:
+        List[Document]: The chunked documents.
+    """
     
-    for doc in document:
+    logger.info("Chunking documents...")
+    chunked_docs: List[Document] = []
+    
+    for doc in documents:
         chunked_docs += chunk_text(doc, chunk_size, chunk_overlap)
     
     return chunked_docs
+
+
+
+def chunk_documents_by_tokens(
+    documents: List[Document], 
+    model_name: str, 
+    chunk_size: int = 2048, 
+    chunk_overlap: int = 200
+) -> List[Document]:
+    """
+    Chunk a list of documents by their token count using a given model's tokenizer.
+
+    Args:
+        documents (List[Document]): The list of documents to be chunked.
+        model_name (str): The name of the model to use for tokenization.
+        chunk_size (int): The size of each chunk in tokens. Defaults to 2048.
+        chunk_overlap (int): The overlap between each chunk in tokens. Defaults to 200.
+
+    Returns:
+        List[Document]: The chunked documents.
+    """
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+    def tiktoken_len(text: str) -> int:
+        tokens = tokenizer.encode(text, add_special_tokens=False)
+        return len(tokens)
+
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        length_function=tiktoken_len,
+        separators=["\n\n", "\n", " ", ""]
+    )
+    return text_splitter.split_documents(documents)

@@ -1,11 +1,11 @@
 import os
 import logging
 from dotenv import load_dotenv, find_dotenv
-
-from .config import INDEX_NAME
+from functools import partial
+from .config import INDEX_NAME, TOKENIZER_MODEL_NAME, EMBEDDING_MODEL_ID
 from .data_loading import load_data_from_s3
-from .data_transformer import get_full_data, convert_to_doc_format, chunk_doc
-from .embeddings import get_bedrock_embeddings, generate_embeddings
+from .data_transformer import get_full_data, convert_to_doc_format, chunk_doc, chunk_documents_by_tokens
+from .embeddings import get_embedding_model, generate_embeddings
 from .vector_storage import opensearch_client, create_index, index_documents
 from ...utils.logger import setup_logger
 
@@ -32,20 +32,15 @@ def data_processing(
     
     documents = convert_to_doc_format(full_data)
     logger.info("Conversion to Langchain Document format complete.")
-    
-    chunked_docs = chunk_doc(documents)
+        
+    chunked_docs = chunk_documents_by_tokens(documents, TOKENIZER_MODEL_NAME)
     logger.info("Chunking documents complete.")
     
-    #if need to reduce further here
-    #num_of_chunked_docs = len(chunked_docs)
-    #logger.info("Number of chuned documents: %s", num_of_chunked_docs) # len(chunked_docs)
-    #chunked_docs = chunked_docs[0:num_of_chunked_docs//2]
-
-    logger.info("Initializing Bedrock embedding...")
-    bedrock_embedding = get_bedrock_embeddings()
+    logger.info("Initializing embedding model...")
+    embedding_model = get_embedding_model(EMBEDDING_MODEL_ID)
     
     logger.info("Generating embeddings...")
-    embedded_docs = generate_embeddings(chunked_docs, bedrock_embedding)
+    embedded_docs = generate_embeddings(chunked_docs, embedding_model)
     
     client = opensearch_client(
         OPENSEARCH_ENDPOINT, 
@@ -97,7 +92,7 @@ def main():
     if not AWS_REGION:
         missing_vars.append('AWS_REGION')
     if missing_vars:
-        logger.error(f"The following environment variables are not set: {', '.join(missing_vars)}")
+        #logger.error(f"The following environment variables are not set: {', '.join(missing_vars)}")
         raise ValueError(f"The following environment variables are not set: {', '.join(missing_vars)}")
 
     # Start the data processing pipeline

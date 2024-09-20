@@ -1,3 +1,6 @@
+TOKENIZER_MODEL_NAME = "tiiuae/falcon-7b-instruct"
+EMBEDDING_MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
+
 INDEX_NAME = 'vegan_papers_index'
 
 INDEX_BODY = {

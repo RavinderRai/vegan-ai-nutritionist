@@ -1,49 +1,42 @@
-import boto3
-from langchain_aws import BedrockEmbeddings
+from sentence_transformers import SentenceTransformer
+from typing import List, Dict
+from langchain.docstore.document import Document
 
 import logging
 
 logger = logging.getLogger(__name__)
 
-def get_bedrock_embeddings(model_id: str = "amazon.titan-embed-text-v1"):
+def get_embedding_model(model_id: str) -> SentenceTransformer:
     """
-    Get a BedrockEmbeddings object which is a client that can interact with the
-    Bedrock embeddings service.
+    Returns a SentenceTransformer model with the given model_id.
 
     Args:
-        model_id (str, optional): The identifier of the model to use. Defaults to
-            "amazon.titan-embed-text-v1".
+        model_id (str): The id of the model to use.
 
     Returns:
-        BedrockEmbeddings: A client that can interact with the Bedrock embeddings
-            service.
+        SentenceTransformer: The SentenceTransformer model.
     """
-    logger.info(f"Initializing BedrockEmbeddings with model_id: {model_id}")
-    bedrock = boto3.client(service_name="bedrock-runtime")
-    
-    bedrock_embeddings = BedrockEmbeddings(
-        model_id=model_id,
-        client=bedrock
-    )
-    
-    return bedrock_embeddings
+
+    logger.info(f"Initializing Embeddings with model_id: {model_id}")
+    return SentenceTransformer(model_id)
 
 
-def generate_embeddings(documents, bedrock_embeddings):
+def generate_embeddings(documents: List[Document], embedding_model: SentenceTransformer):
     """
-    Generate embeddings for a list of documents and return a new list of documents with embeddings included.
+    Generate embeddings for a list of documents and return a new list of documents 
+    with their respective embeddings, computed using an open source sentence transformer model.
 
     Args:
-        documents (list[Document]): The list of documents to generate embeddings for.
-        bedrock_embeddings (BedrockEmbeddings): The client that can interact with the Bedrock embeddings service.
+        documents (List[Document]): The list of documents to generate embeddings for.
+        embedding_model (SentenceTransformer): The open source sentence transformer model to use.
 
     Returns:
-        list[dict]: A list of documents where each document has the embedding included as a key.
+        List[Dict[str, Union[List[float], str, Dict[str, str]]]]: A list of documents where each document has the embedding included as a key.
     """
     logger.info("Generating embeddings for documents...")
     texts = [doc.page_content for doc in documents]
     
-    embeddings = bedrock_embeddings.embed_documents(texts)
+    embeddings = embedding_model.encode(texts)
     
     documents_with_embeddings = []
     
