@@ -1,5 +1,7 @@
 .env
 
+notebooks/.ipynb_checkpoints
+
 infra/data_ingestion/terraform.tfvars
 infra/data_ingestion/terraform.tfstate
 infra/data_ingestion/terraform.tfstate.backup
