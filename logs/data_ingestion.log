@@ -1021,3 +1021,208 @@
 2024-09-11 22:02:53,302 - springer_api_client - INFO - Returning the full text.
 2024-09-11 22:03:13,324 - data_ingestion - INFO - Data ingestion completed. Uploading to S3 bucket
 2024-09-11 22:03:14,935 - data_ingestion - INFO - Data uploaded to S3 bucket
+2024-09-21 15:26:11,693 - data_ingestion - INFO - Starting ingestion with 250 records. Expect 1 minutes per 75 records.
+2024-09-21 15:26:11,694 - springer_api_client - INFO - Requesting paper meta data.
+2024-09-21 15:26:13,600 - data_transformer - INFO - Retrieved meta data for papers, now saving them alongside the full pdf text.
+2024-09-21 15:26:13,602 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-031-65003-1_8.
+2024-09-21 15:26:15,003 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:15,022 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:15,026 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:15,029 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-031-65003-1_10.
+2024-09-21 15:26:16,277 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:16,286 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:16,288 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:16,289 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-031-65003-1_1.
+2024-09-21 15:26:17,069 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:17,074 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:17,077 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:17,081 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-031-65003-1_7.
+2024-09-21 15:26:18,256 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:18,258 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:18,259 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:18,260 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-031-65003-1_3.
+2024-09-21 15:26:19,056 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:19,060 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:19,062 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:19,064 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-031-61810-9_1.
+2024-09-21 15:26:20,253 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:20,255 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:20,256 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:20,257 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-662-69174-8_4.
+2024-09-21 15:26:21,236 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:21,239 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:21,240 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:21,241 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-662-69174-8_3.
+2024-09-21 15:26:22,074 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:22,101 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:22,102 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:22,103 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/978-3-662-69174-8_1.
+2024-09-21 15:26:22,959 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:22,965 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:22,968 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:22,972 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s00217-024-04565-1.
+2024-09-21 15:26:24,033 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:24,047 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:24,049 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:24,051 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s00296-024-05691-5.
+2024-09-21 15:26:24,871 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:24,875 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:24,876 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:24,878 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s13197-024-05964-8.
+2024-09-21 15:26:25,739 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:25,744 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:25,745 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:25,747 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s40122-024-00641-2.
+2024-09-21 15:26:26,666 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:26,669 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:26,670 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:26,672 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11906-024-01310-7.
+2024-09-21 15:26:27,505 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:27,507 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:27,508 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:27,510 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10311-024-01753-z.
+2024-09-21 15:26:28,698 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:28,707 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:28,708 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:28,710 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s13197-024-05974-6.
+2024-09-21 15:26:29,538 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:29,549 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:29,552 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:29,555 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s00217-024-04566-0.
+2024-09-21 15:26:30,237 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:30,239 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:30,241 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:30,242 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s13280-024-02037-0.
+2024-09-21 15:26:31,053 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:31,057 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:31,059 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:31,060 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s40725-024-00225-5.
+2024-09-21 15:26:32,002 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:32,020 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:32,023 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:32,025 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11252-024-01552-y.
+2024-09-21 15:26:32,844 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:32,854 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:32,857 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:32,859 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s00467-024-06303-x.
+2024-09-21 15:26:33,985 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:33,998 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:34,000 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:34,003 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11947-023-03279-8.
+2024-09-21 15:26:34,949 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:34,955 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:34,956 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:34,958 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s00374-024-01845-6.
+2024-09-21 15:26:35,802 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:35,809 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:35,810 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:35,812 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10389-023-01938-w.
+2024-09-21 15:26:36,626 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:36,630 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:36,632 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:36,634 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11120-024-01112-7.
+2024-09-21 15:26:37,475 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:37,485 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:37,486 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:57,493 - springer_api_client - INFO - Requesting paper meta data.
+2024-09-21 15:26:58,986 - data_transformer - INFO - Retrieved meta data for papers, now saving them alongside the full pdf text.
+2024-09-21 15:26:58,990 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11947-023-03292-x.
+2024-09-21 15:26:59,801 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:26:59,812 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:26:59,813 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:26:59,815 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s12011-023-04019-x.
+2024-09-21 15:27:01,195 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:01,200 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:01,202 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:01,204 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10578-023-01499-9.
+2024-09-21 15:27:02,049 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:02,054 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:02,056 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:02,058 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10530-024-03394-3.
+2024-09-21 15:27:02,908 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:02,911 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:02,912 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:02,913 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11191-023-00429-4.
+2024-09-21 15:27:03,729 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:03,737 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:03,740 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:03,743 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10499-024-01448-w.
+2024-09-21 15:27:04,568 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:04,578 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:04,581 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:04,584 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10499-024-01469-5.
+2024-09-21 15:27:05,449 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:05,453 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:05,455 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:05,457 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10526-023-10237-y.
+2024-09-21 15:27:06,308 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:06,313 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:06,314 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:06,315 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s12035-024-04030-w.
+2024-09-21 15:27:07,243 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:07,249 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:07,251 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:07,253 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10499-024-01500-9.
+2024-09-21 15:27:08,054 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:08,057 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:08,058 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:08,060 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s13197-024-05968-4.
+2024-09-21 15:27:08,850 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:08,853 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:08,856 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:08,857 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10876-024-02645-6.
+2024-09-21 15:27:09,856 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:09,860 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:09,861 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:09,863 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s13280-024-02030-7.
+2024-09-21 15:27:10,655 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:10,668 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:10,672 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:10,676 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11947-023-03293-w.
+2024-09-21 15:27:11,584 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:11,590 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:11,592 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:11,593 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s13197-024-05976-4.
+2024-09-21 15:27:12,367 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:12,370 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:12,371 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:12,372 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11947-023-03311-x.
+2024-09-21 15:27:13,366 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:13,386 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:13,389 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:13,392 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10499-024-01485-5.
+2024-09-21 15:27:14,226 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:14,229 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:14,231 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:14,232 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10499-024-01467-7.
+2024-09-21 15:27:15,049 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:15,065 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:15,071 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:15,074 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s00204-024-03826-y.
+2024-09-21 15:27:15,863 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:15,866 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:15,867 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:15,869 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s12011-023-04031-1.
+2024-09-21 15:27:16,973 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:17,009 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:17,011 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:17,013 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s10530-024-03382-7.
+2024-09-21 15:27:17,792 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:17,800 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:17,803 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:17,807 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s11357-024-01225-w.
+2024-09-21 15:27:18,664 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:18,669 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:18,670 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:18,672 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s00449-024-03067-4.
+2024-09-21 15:27:19,470 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:19,474 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:19,475 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:19,477 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s12011-023-04007-1.
+2024-09-21 15:27:20,418 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:20,442 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:20,446 - springer_api_client - INFO - Returning the full text.
+2024-09-21 15:27:20,448 - springer_api_client - INFO - Fetching full text for DOI: 10.1007/s12011-024-04058-y.
+2024-09-21 15:27:21,255 - springer_api_client - INFO - Successfully retrieved the full text.
+2024-09-21 15:27:21,262 - springer_api_client - INFO - Found a body section in the XML, now extracting content.
+2024-09-21 15:27:21,265 - springer_api_client - INFO - Returning the full text.

@@ -1,4 +1,5 @@
 import os
+import re
 import time
 import numpy as np
 from dotenv import load_dotenv, find_dotenv
@@ -54,13 +55,15 @@ def ingest_data(
 
 
 if __name__ == "__main__":
-    QUERY = input("Enter the query (default: 'vegan nutrition'): ") or "vegan OR plant-based"
+    QUERY = input("Enter the query (default: 'vegan OR plant-based nutrition'): ") or "vegan OR plant based nutrition"
     API_KEY = os.environ.get("SPRINGER_NATURE_API")
     BUCKET_NAME = os.environ.get('AWS_BUCKET_NAME')
-    TOTAL_RECORDS = input("Enter the total number of records (default: 100): ") or 100
+    TOTAL_RECORDS = input("Enter the total number of records (default: 250): ") or 250
     TOTAL_RECORDS = int(TOTAL_RECORDS)
     MAX_RECORDS = 25
-    FILE_NAME = input("Enter the file name for storing the data (default: raw_pdf_data.json): ") or "raw_pdf_data.json"
+    
+    default_file_name = re.sub(r'\s+', '_', QUERY).lower() + "_data.json"
+    FILE_NAME = input(f"Enter the file name for storing the data (default: {default_file_name}): ") or default_file_name
 
 
     # Call the main ingestion function with the provided values
