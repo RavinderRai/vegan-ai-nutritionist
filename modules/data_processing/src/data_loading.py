@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 def load_data_from_s3(
     bucket_name: str, 
-    file_name: str = 'vegan_research_papers.json'
+    file_name: str = 'vegan_or_plant_based_nutrition_data.json'
 ) -> List[Dict]:
     """
     Loads JSON data from an S3 bucket.

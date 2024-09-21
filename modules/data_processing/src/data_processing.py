@@ -1,7 +1,6 @@
 import os
 import logging
 from dotenv import load_dotenv, find_dotenv
-from functools import partial
 from .config import INDEX_NAME, TOKENIZER_MODEL_NAME, EMBEDDING_MODEL_ID
 from .data_loading import load_data_from_s3
 from .data_transformer import get_full_data, convert_to_doc_format, chunk_doc, chunk_documents_by_tokens
@@ -24,8 +23,9 @@ def data_processing(
     data = load_data_from_s3(AWS_BUCKET_NAME)
     logger.info("Data loaded successfully from S3.")
     
-    #only load first 50 papers
-    data = data[0:50]
+    # only load first 50 papers
+    # if you use bedrock embeddings from a previous version this will prevent too many token errors
+    #data = data[0:50]
     
     full_data = get_full_data(data)
     logger.info("Full data aggregation complete.")

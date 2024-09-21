@@ -117,3 +117,13 @@
 2024-09-19 22:16:24,210 - data_processing - INFO - Index 'vegan_papers_index' created successfully.
 2024-09-19 22:16:27,438 - data_processing - INFO - Indexed 80 documents into index 'vegan_papers_index'.
 2024-09-19 22:16:27,439 - data_processing - INFO - Finished data processing pipeline.
+2024-09-21 15:42:20,843 - data_processing - INFO - Starting main data processing function.
+2024-09-21 15:42:22,403 - data_processing - INFO - Data loaded successfully from S3.
+2024-09-21 15:42:22,410 - data_processing - INFO - Full data aggregation complete.
+2024-09-21 15:42:22,432 - data_processing - INFO - Conversion to Langchain Document format complete.
+2024-09-21 15:43:44,406 - data_processing - INFO - Chunking documents complete.
+2024-09-21 15:43:44,408 - data_processing - INFO - Initializing embedding model...
+2024-09-21 15:43:46,229 - data_processing - INFO - Generating embeddings...
+2024-09-21 15:43:59,426 - data_processing - INFO - Index 'vegan_papers_index' created successfully.
+2024-09-21 15:44:09,439 - data_processing - INFO - Indexed 201 documents into index 'vegan_papers_index'.
+2024-09-21 15:44:09,440 - data_processing - INFO - Finished data processing pipeline.
