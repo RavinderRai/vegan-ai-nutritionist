@@ -20,3 +20,6 @@ modules/data_ingestion/__pycache__/
 modules/data_ingestion/src/__pycache__/
 modules/data_processing/__pycache__/
 modules/data_processing/src/__pycache__/
+
+modules/q_and_a_dataset/__pycache__/
+modules/q_and_a_dataset/src/__pycache__/

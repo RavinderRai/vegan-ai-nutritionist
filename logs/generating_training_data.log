@@ -1,2 +1,13 @@
 2024-09-21 22:17:14,947 - generating_training_data - INFO - Starting to iteratively generate training data.
 2024-09-21 22:18:46,494 - generating_training_data - INFO - Starting to iteratively generate training data.
+2024-09-21 22:33:57,144 - generating_training_data - INFO - Starting to iteratively generate training data.
+2024-09-21 22:33:57,145 - generating_training_data - INFO - Setting up OpenAI API client...
+2024-09-21 22:33:57,505 - generating_training_data - INFO - Setting up OpenSearch client...
+2024-09-21 22:33:57,506 - generating_training_data - INFO - Slicing EXAMPLES to 40 for now to save time as we are testing things out. Will change this later.
+2024-09-21 22:35:42,813 - generating_training_data - INFO - Training data generated successfully.
+2024-09-21 22:43:09,994 - generating_training_data - INFO - Setting up OpenAI API client...
+2024-09-21 22:43:10,378 - generating_training_data - INFO - Setting up OpenSearch client...
+2024-09-21 22:43:10,379 - generating_training_data - INFO - Slicing EXAMPLES to 40 for now to save time as we are testing things out. Will change this later.
+2024-09-21 22:43:10,380 - generating_training_data - INFO - Starting to iteratively generate training data.
+2024-09-21 22:43:17,784 - generating_training_data - INFO - Training data generated successfully.
+2024-09-21 22:43:17,785 - generating_training_data - INFO - Training data saved successfully.
