@@ -1,1 +1,0 @@
-DATA_PATH = "modules/model_training/data/"
