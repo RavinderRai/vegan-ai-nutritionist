@@ -17,3 +17,8 @@
 2024-09-22 10:15:38,724 - generating_training_data - INFO - Starting to iteratively generate training data.
 2024-09-22 10:16:37,405 - generating_training_data - INFO - Training data generated successfully.
 2024-09-22 10:16:37,408 - generating_training_data - INFO - Training data saved successfully.
+2024-09-22 19:16:35,588 - generating_training_data - INFO - Setting up OpenAI API client...
+2024-09-22 19:16:35,956 - generating_training_data - INFO - Setting up OpenSearch client...
+2024-09-22 19:16:35,957 - generating_training_data - INFO - Starting to iteratively generate training data.
+2024-09-22 19:21:13,294 - generating_training_data - INFO - Training data generated successfully.
+2024-09-22 19:21:13,303 - generating_training_data - INFO - Training data saved successfully.

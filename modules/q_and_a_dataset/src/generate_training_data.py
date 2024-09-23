@@ -19,8 +19,8 @@ def run(EXAMPLES, DATA_PATH):
     logger.info("Setting up OpenSearch client...")
     opensearch_client = get_opensearch_client()
     
-    logger.info("Slicing EXAMPLES to 40 for now to save time as we are testing things out. Will change this later.")
-    EXAMPLES = EXAMPLES[:15]
+    #logger.info("Slicing EXAMPLES to 40 for now to save time as we are testing things out. Will change this later.")
+    #EXAMPLES = EXAMPLES[:15]
     
     logger.info("Starting to iteratively generate training data.")    
     for example in tqdm(EXAMPLES):
