@@ -14,6 +14,12 @@ infra/data_processing/terraform.tfstate.backup
 infra/data_processing/.terraform.lock.hcl
 infra/data_processing/.terraform/
 
+infra/model_training/terraform.tfvars
+infra/model_training/terraform.tfstate
+infra/model_training/terraform.tfstate.backup
+infra/model_training/.terraform.lock.hcl
+infra/model_training/.terraform/
+
 modules/__pycache__/
 modules/utils/__pycache__/
 modules/data_ingestion/__pycache__/
