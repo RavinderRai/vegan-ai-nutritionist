@@ -1,4 +1,5 @@
 
+import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments
 from datasets import load_dataset
 
@@ -16,7 +17,7 @@ def tokenize_function(examples):
     return {"input_ids": input_ids, "attention_mask": [1] * len(input_ids), "labels": labels}
 
 # Load model and tokenizer
-model_name = "tiiuae/falcon-7b-instruct"
+model_name = "mistralai/Mistral-7B-Instruct-v0.3"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 
@@ -29,7 +30,7 @@ tokenized_test = test_dataset.map(tokenize_function, remove_columns=test_dataset
 
 # Training arguments
 training_args = TrainingArguments(
-    output_dir="/opt/ml/model",
+    output_dir="s3://falcon-artifact/", # default value is "/opt/ml/model",
     num_train_epochs=1,
     per_device_train_batch_size=1,
     per_device_eval_batch_size=1,
@@ -43,6 +44,8 @@ training_args = TrainingArguments(
 
 # Trainer setup
 model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = model.to(device)
 
 trainer = Trainer(
     model=model,
