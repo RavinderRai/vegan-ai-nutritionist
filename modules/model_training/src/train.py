@@ -4,20 +4,32 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingA
 from datasets import load_dataset
 
 def tokenize_function(examples):
+    # Combine 'about_me' and 'context' for the full context
     full_context = examples['about_me'] + ' ' + examples['context']
+    
+    # Create the prompt using the full context
     prompt = f"Question: {examples['question']}\nContext: {full_context}\nAnswer:"
     response = examples['response']
     
+    # Tokenize inputs and labels
     tokenized_input = tokenizer(prompt, truncation=True, padding="max_length", max_length=512)
     tokenized_output = tokenizer(response, truncation=True, padding="max_length", max_length=512)
     
-    input_ids = tokenized_input["input_ids"] + tokenized_output["input_ids"][1:]  # Remove BOS token
-    labels = [-100] * len(tokenized_input["input_ids"]) + tokenized_output["input_ids"][1:]
+    # Combine input and output (GPT-2 is autoregressive)
+    input_ids = tokenized_input["input_ids"] + tokenized_output["input_ids"]
     
-    return {"input_ids": input_ids, "attention_mask": [1] * len(input_ids), "labels": labels}
+    # Create the labels (output sequence should be the entire concatenated sequence)
+    labels = [-100] * len(tokenized_input["input_ids"]) + tokenized_output["input_ids"]
+    
+    return {
+        "input_ids": input_ids, 
+        "attention_mask": [1] * len(input_ids), 
+        "labels": labels
+    }
+
 
 # Load model and tokenizer
-model_name = "mistralai/Mistral-7B-Instruct-v0.3"
+model_name = "openai-community/gpt2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 
@@ -32,8 +44,8 @@ tokenized_test = test_dataset.map(tokenize_function, remove_columns=test_dataset
 training_args = TrainingArguments(
     output_dir="s3://falcon-artifact/", # default value is "/opt/ml/model",
     num_train_epochs=1,
-    per_device_train_batch_size=1,
-    per_device_eval_batch_size=1,
+    per_device_train_batch_size=2,
+    per_device_eval_batch_size=2,
     evaluation_strategy="steps",
     eval_steps=500,
     save_steps=1000,
