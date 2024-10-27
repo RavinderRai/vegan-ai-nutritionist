@@ -1,3 +1,4 @@
+
 import os
 import argparse
 from transformers import (
@@ -9,7 +10,7 @@ from transformers import (
     Trainer,
     TrainingArguments,
 )
-from datasets import load_from_disk
+from datasets import load_dataset, load_from_disk
 import torch
 from peft import PeftConfig, PeftModel
 
@@ -24,7 +25,8 @@ def parse_arge():
         default="google/flan-t5-xl",
         help="Model id to use for training.",
     )
-    parser.add_argument("--dataset_path", type=str, default="lm_dataset", help="Path to dataset.")
+    parser.add_argument("--train_data_path", type=str, default="train_dataset", help="Path to dataset.")
+    parser.add_argument("--val_data_path", type=str, default="val_dataset", help="Path to dataset.")
     # add training hyperparameters for epochs, batch size, learning rate, and seed
     parser.add_argument("--epochs", type=int, default=3, help="Number of epochs to train for.")
     parser.add_argument(
@@ -92,8 +94,11 @@ def training_function(args):
     # set seed
     set_seed(args.seed)
 
-    dataset = load_from_disk(args.dataset_path)
-    
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
+
+    train_dataset = load_from_disk(args.train_data_path)
+    val_dataset = load_from_disk(args.val_data_path)
+
     # load model from the hub with a bnb config
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
@@ -101,6 +106,7 @@ def training_function(args):
         bnb_4bit_quant_type="nf4",
         bnb_4bit_compute_dtype=torch.bfloat16,
     )
+    
 
     model = AutoModelForCausalLM.from_pretrained(
         args.model_id,
@@ -128,13 +134,15 @@ def training_function(args):
         logging_strategy="steps",
         logging_steps=10,
         save_strategy="no",
+        max_steps=5
     )
 
     # Create Trainer instance
     trainer = Trainer(
         model=model,
         args=training_args,
-        train_dataset=dataset,
+        train_dataset=train_dataset,
+        eval_dataset=val_dataset,
         data_collator=default_data_collator,
     )
 
