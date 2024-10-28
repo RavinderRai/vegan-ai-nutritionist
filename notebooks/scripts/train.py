@@ -1,4 +1,5 @@
 
+
 import os
 import argparse
 from transformers import (
@@ -94,8 +95,6 @@ def training_function(args):
     # set seed
     set_seed(args.seed)
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
-
     train_dataset = load_from_disk(args.train_data_path)
     val_dataset = load_from_disk(args.val_data_path)
 
@@ -134,7 +133,7 @@ def training_function(args):
         logging_strategy="steps",
         logging_steps=10,
         save_strategy="no",
-        max_steps=5
+        max_steps=3
     )
 
     # Create Trainer instance
@@ -180,8 +179,8 @@ def training_function(args):
         trainer.model.save_pretrained("/opt/ml/model/", safe_serialization=True)
 
     # save tokenizer for easy inference
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
-    tokenizer.save_pretrained("/opt/ml/model/")
+    #tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
+    #tokenizer.save_pretrained("/opt/ml/model/")
 
 
 def main():
