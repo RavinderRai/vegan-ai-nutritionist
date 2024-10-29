@@ -1,0 +1,7 @@
+boto3==1.35.49
+mlflow==2.16.2
+peft==0.13.2
+python-dotenv==1.0.1
+sagemaker==2.232.2
+torch==2.5.0
+transformers==4.45.2
