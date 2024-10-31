@@ -40,7 +40,7 @@ class SageMakerTraining:
         logger.info("Creating HuggingFace estimator...")
         return HuggingFace(
             entry_point='train.py',
-            source_dir='training_scripts',
+            source_dir='modules/model_training/src/training_scripts',
             instance_type='ml.p3.2xlarge',
             instance_count=1,
             base_job_name=job_name,
@@ -54,18 +54,18 @@ class SageMakerTraining:
             max_run=1 * 60 * 60,
             max_wait=2 * 60 * 60,
             environment={"HUGGINGFACE_HUB_CACHE": "/tmp/.cache"},
-            dependencies=['src/training_scripts/requirements.txt'],
+            dependencies=['modules/model_training/src/training_scripts/requirements.txt'],
         )
     
     def run_training(self, training_input_path, testing_input_path):
         logger.info("Starting training process...")
         job_name = self.create_job_name()
         hyperparameters = self.get_hyperparameters(
-            training_input_path, 
+            training_input_path,
             testing_input_path
         )
 
-        mlflow.set_tracking_uri("C:\Users\RaviB\GitHub\vegan-ai-nutritionist\mlflow")
+        mlflow.set_tracking_uri("sqlite:///C:/Users/RaviB/GitHub/vegan-ai-nutritionist/mlflow/mlflow.db")
         
         with mlflow.start_run():
             logger.info("Starting MLflow run...")
@@ -108,4 +108,5 @@ def main():
     _ = sage_maker_training.run_training(training_input_path, testing_input_path)
 
 if __name__ == "__main__":
+    # note: run from the root directory with this command `python -m modules.model_training.src.trainer`
     main()

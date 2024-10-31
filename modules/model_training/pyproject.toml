@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "model-training"
 version = "0.1.0"
-description = "Model training pipeline to fine-tune a smaller model on synthetic data"
+description = "Model training pipeline to fine-tune a smaller language model"
 authors = ["Ravinder Rai"]
 readme = "README.md"
 

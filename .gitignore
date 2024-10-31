@@ -30,5 +30,10 @@ modules/data_processing/src/__pycache__/
 modules/q_and_a_dataset/__pycache__/
 modules/q_and_a_dataset/src/__pycache__/
 
+modules/model_training/__pycache__/
+modules/model_training/src/__pycache__/
+
 notebooks/results/
 notebooks/mlruns/
+
+mlflow/mlflow.db
