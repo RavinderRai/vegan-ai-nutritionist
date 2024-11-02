@@ -1,17 +1,19 @@
 import boto3
 import sagemaker
 import json
-from .config import AWSConfig
+from ...config import AWSConfigCredentials
 
 class AWSConnector:
     def __init__(self):
+        aws_credentials = AWSConfigCredentials.load()
+
         self.boto3_session = boto3.Session(
-            aws_access_key_id=AWSConfig.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=AWSConfig.AWS_SECRET_ACCESS_KEY
+            aws_access_key_id=aws_credentials.aws_access_key_id,
+            aws_secret_access_key=aws_credentials.aws_secret_access_key
         )
         
-        self.sagemaker_session = self._init_sagemaker_session()
         self.s3_client = self.boto3_session.client('s3')
+        self.sagemaker_session = self._init_sagemaker_session()
     
     def _init_sagemaker_session(self):
         sess = sagemaker.Session(boto_session=self.boto3_session)
@@ -22,10 +24,3 @@ class AWSConnector:
         response = self.s3_client.get_object(Bucket=bucket, Key=key)
         data = response['Body'].read().decode('utf-8')
         return json.loads(data)
-    
-    def get_session_info(self):
-        return {
-            'role_arn': AWSConfig.SAGEMAKER_ROLE,
-            'bucket': self.sagemaker_session.default_bucket(),
-            'region': self.sagemaker_session.boto_region_name
-        }

@@ -1,7 +1,11 @@
 from datasets import Dataset
 from transformers import AutoTokenizer
-from .config import ModelConfig, S3Config
-from .utils import AWSConnector
+import logging
+from ...config import ModelConfig, S3Config
+from ...utils.utils import AWSConnector
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class Tokenizer:
     def __init__(self):
@@ -35,7 +39,7 @@ class Tokenizer:
             "labels": labels
         }
     
-    def process_and_save_datasets(self, train_data, test_data, sagemaker_session):
+    def process_and_save_datasets(self, train_data, test_data, tokenized_training_path, tokenized_test_path):
         # Convert to dictionary format
         train_dict = self.convert_to_dict_format(train_data)
         test_dict = self.convert_to_dict_format(test_data)
@@ -55,24 +59,20 @@ class Tokenizer:
         )
         
         # Save to S3
-        bucket = sagemaker_session.default_bucket()
-        training_path = f's3://{bucket}/processed/falcon/tokenized-train-data'
-        testing_path = f's3://{bucket}/processed/falcon/tokenized-test-data'
+        #training_path = f's3://{bucket_name}/tokenized-data/falcon/tokenized-train-data'
+        #testing_path = f's3://{bucket_name}/tokenized-data/falcon/tokenized-test-data'
         
-        tokenized_train.save_to_disk(training_path)
-        tokenized_test.save_to_disk(testing_path)
+        tokenized_train.save_to_disk(tokenized_training_path)
+        tokenized_test.save_to_disk(tokenized_test_path)
         
-        return training_path, testing_path
+        return tokenized_training_path, tokenized_test_path
     
 def main():
-    # Initialize AWS connection
+    logger.info("Initializing AWS connection..")
     aws_connector = AWSConnector()
-    session_info = aws_connector.get_session_info()
-    print(f"SageMaker Role ARN: {session_info['role_arn']}")
-    print(f"SageMaker Bucket: {session_info['bucket']}")
-    print(f"SageMaker Session Region: {session_info['region']}")
+    #session_info = aws_connector.get_session_info()
     
-    # Load data from S3
+    logger.info("Loading data from S3..")
     train_data = aws_connector.load_data_from_s3(
         S3Config.BUCKET_NAME, 
         S3Config.TRAIN_DATA_KEY
@@ -82,17 +82,20 @@ def main():
         S3Config.TEST_DATA_KEY
     )
     
-    # Process and save datasets
+    logger.info("Saving tokenized datasets..")
     processor = Tokenizer()
-    train_path, test_path = processor.process_and_save_datasets(
+    s3_config = S3Config()
+
+    tokenized_training_path, tokenized_test_path = processor.process_and_save_datasets(
         train_data, 
-        test_data, 
-        aws_connector.sagemaker_session
+        test_data,
+        s3_config.get_tokenized_train_data_uri(),
+        s3_config.get_tokenized_test_data_uri()
     )
     
-    print("Uploaded data to:")
-    print(f"Training dataset: {train_path}")
-    print(f"Testing dataset: {test_path}")
+    logger.info("Uploaded data to:")
+    logger.info(f"Training dataset: {tokenized_training_path}")
+    logger.info(f"Testing dataset: {tokenized_test_path}")
 
 if __name__ == "__main__":
     main()

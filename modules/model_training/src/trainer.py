@@ -1,10 +1,9 @@
 import time
 import mlflow
-import sagemaker
 from sagemaker.huggingface import HuggingFace
 
-from .config import AWSConfig, S3Config, ModelConfig
-from .utils import AWSConnector
+from ...config import AWSConfigCredentials, S3Config, ModelConfig
+from ...utils.utils import AWSConnector
 from ...utils.logger import setup_logger
 
 logger = setup_logger("model_trainer", "model_training.log")
@@ -98,11 +97,13 @@ class SageMakerTraining:
 def main():
     logger.info("Loading AWS connections...")
     aws_connector = AWSConnector()
+    aws_credentials = AWSConfigCredentials.load()
     
-    training_input_path = S3Config.get_train_data_uri()
-    testing_input_path = S3Config.get_test_data_uri()
+    s3_config = S3Config()
+    training_input_path = s3_config.get_tokenized_train_data_uri()
+    testing_input_path = s3_config.get_tokenized_test_data_uri()
 
-    sage_maker_training = SageMakerTraining(aws_connector, AWSConfig.SAGEMAKER_ROLE)
+    sage_maker_training = SageMakerTraining(aws_connector, aws_credentials.sagemaker_role)
 
     logger.info("Running training...")
     _ = sage_maker_training.run_training(training_input_path, testing_input_path)
