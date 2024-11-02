@@ -36,7 +36,7 @@ def deploy_huggingface_model(sagemaker_role: str, llm_image: str, sagemaker_sess
         container_startup_health_check_timeout=ModelDeploymentConfig.CONTAINER_STARTUP_HEALTH_CHECK_TIMEOUT
     )
 
-    return llm
+    return hf_model.name, llm
 
 def deploy_model(sagemaker_role, llm_image, s3_model_uri, config, sagemaker_session):
     return deploy_huggingface_model(

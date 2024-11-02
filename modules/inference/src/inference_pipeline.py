@@ -1,31 +1,32 @@
-import json
+import mlflow
 from datetime import datetime
-from model_utils import get_model_data_uri
 from sagemaker.huggingface import get_huggingface_llm_image_uri
 
 from ...config import AWSConfigCredentials, ModelDeploymentConfig
 from ...utils.utils import AWSConnector
 from ...utils.logger import setup_logger
+from .model_utils import get_model_data_uri
 from .model_deployment import deploy_model, deploy_base_model
 
 logger = setup_logger("inference", "inference.log")
 
-def save_endpoint_info(endpoint_name: str, file_path: str = "endpoint_info.json") -> None:
+def save_endpoint_info(model_name: str, endpoint_name: str) -> None:
     """
-    Save the endpoint name to a JSON file.
+    Save the endpoint name and timestamp to MLflow as parameters and artifacts.
     
     Args:
         endpoint_name (str): Name of the deployed endpoint
-        file_path (str): Path to save the endpoint information
     """
-    info = {
-        "endpoint_name": endpoint_name,
-        "deployment_timestamp": str(datetime.datetime.now())
-    }
-    
-    with open(file_path, 'w') as f:
-        json.dump(info, f, indent=4)
-    logger.info(f"Endpoint information saved to {file_path}")
+    # Start an MLflow run
+    mlflow.set_tracking_uri("sqlite:///C:/Users/RaviB/GitHub/vegan-ai-nutritionist/mlflow/endpoints.db")
+    with mlflow.start_run() as run:
+        # Log the endpoint name and timestamp as parameters
+        mlflow.log_param("model_name", model_name)
+        mlflow.log_param("endpoint_name", endpoint_name)
+        mlflow.log_param("deployment_timestamp", str(datetime.now()))
+
+
+    logger.info(f"Endpoint information saved to MLflow with run ID: {run.info.run_id}")
 
 def main():
     """
@@ -58,26 +59,31 @@ def main():
 
     try:
         logger.info("Deploying the model as a SageMaker endpoint...")
-        llm = deploy_model(
+        model_name, endpoint = deploy_model(
             aws_credentials.sagemaker_role, 
             llm_image, 
             s3_model_uri, 
             deployment_config, 
             aws_connector.sagemaker_session
         )
-        logger.info("Model deployed successfully: %s", llm)
-        save_endpoint_info(llm.endpoint_name)
+        endpoint_name = endpoint.endpoint_name
+        
+        logger.info("Model deployed successfully: %s", endpoint_name)
+        save_endpoint_info(model_name, endpoint_name)
+        
     except Exception as e:
         logger.error("Failed to deploy the model: %s", e)
         logger.info("Attempting to deploy the base model instead...")
         try:
-            llm = deploy_base_model(
+            model_name, endpoint = deploy_base_model(
                 aws_credentials.sagemaker_role, 
                 llm_image, 
                 aws_connector.sagemaker_session
             )
-            logger.info("Base model deployed successfully: %s", llm)
-            save_endpoint_info(llm.endpoint_name)
+            
+            endpoint_name = endpoint.endpoint_name
+            logger.info("Base model deployed successfully: %s", endpoint_name)
+            save_endpoint_info(model_name, endpoint_name)
         except Exception as base_e:
             logger.error("Failed to deploy the base model: %s", base_e)
             raise RuntimeError("Both model and base model deployment failed.") from base_e

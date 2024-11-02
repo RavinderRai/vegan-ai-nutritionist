@@ -53,7 +53,8 @@ class ModelDeploymentConfig:
     @staticmethod
     def get_deployment_config():
         return {
-            "initial_instance_count": ModelDeploymentConfig.INITIAL_INSTANCE_COUNT,
+            # AWS SDKs need string representation of numbers
+            "initial_instance_count": str(ModelDeploymentConfig.INITIAL_INSTANCE_COUNT),
             "instance_type": ModelDeploymentConfig.INSTANCE_TYPE,
             "container_startup_health_check_timeout": ModelDeploymentConfig.CONTAINER_STARTUP_HEALTH_CHECK_TIMEOUT,
         }

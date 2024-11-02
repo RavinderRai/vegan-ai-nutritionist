@@ -1,7 +1,7 @@
 import boto3
 import sagemaker
 import json
-from ...config import AWSConfigCredentials
+from ..config import AWSConfigCredentials
 
 class AWSConnector:
     def __init__(self):
@@ -13,6 +13,7 @@ class AWSConnector:
         )
         
         self.s3_client = self.boto3_session.client('s3')
+        self.sagemaker_client = self.boto3_session.client('sagemaker')
         self.sagemaker_session = self._init_sagemaker_session()
     
     def _init_sagemaker_session(self):
@@ -24,3 +25,9 @@ class AWSConnector:
         response = self.s3_client.get_object(Bucket=bucket, Key=key)
         data = response['Body'].read().decode('utf-8')
         return json.loads(data)
+    
+    def delete_sagemaker_model(self, model_name):
+        self.sagemaker_client.delete_model(ModelName=model_name)
+    
+    def delete_sagemaker_endpoint(self, endpoint_name):
+        self.sagemaker_client.delete_endpoint(EndpointName=endpoint_name)
