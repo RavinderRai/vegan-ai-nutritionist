@@ -9,6 +9,9 @@ from langchain.llms.bedrock import Bedrock
 from langchain.prompts import PromptTemplate
 from langchain_aws import BedrockEmbeddings
 
+from inference.src.model_inference import ModelInference
+
+
 INDEX_NAME = "vegan_papers_index"
 
 PROMPT_TEMPLATE = """

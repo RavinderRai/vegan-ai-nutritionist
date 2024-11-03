@@ -36,6 +36,8 @@ modules/model_training/src/__pycache__/
 modules/inference/__pycache__/
 modules/inference/src/__pycache__/
 
+modules/__pycache__/
+
 notebooks/results/
 notebooks/mlruns/
 

@@ -1,7 +1,9 @@
 import boto3
 import sagemaker
 import json
-from ..config import AWSConfigCredentials
+
+# change back to ...from config import AWSConfigCredentials if not running strealit app
+from config import AWSConfigCredentials
 
 class AWSConnector:
     def __init__(self):
