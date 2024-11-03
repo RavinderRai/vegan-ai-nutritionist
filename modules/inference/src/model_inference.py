@@ -3,9 +3,11 @@ import logging
 from sagemaker.huggingface import HuggingFacePredictor
 
 # change back to
-# ...from config import AWSConfigCredentials 
-# ...utils.utils import AWSConnector
+# from .model_utils import get_model_data_uri
+# from ...config import AWSConfigCredentials 
+# from ...utils.utils import AWSConnector
 # if not running strealit app
+from inference.src.model_utils import get_model_data_uri
 from config import AWSConfigCredentials
 from utils.utils import AWSConnector
 
@@ -13,7 +15,8 @@ class ModelInference:
     """
     A class for performing inference using a Hugging Face model deployed on Amazon SageMaker.
     """
-    def __init__(self, endpoint_name: str):
+    
+    def __init__(self, endpoint_name: str = None):
         """
         Initializes the ModelInference class with the specified SageMaker endpoint.
         
@@ -21,6 +24,14 @@ class ModelInference:
             endpoint_name (str): The name of the SageMaker endpoint to be used for inference.
         """
         logging.basicConfig(level=logging.INFO)
+        
+        if endpoint_name is None:
+            latest_endpoint = get_model_data_uri(
+                ['endpoint_name'], 
+                run_number=0, 
+                mlflow_data_path="sqlite:///C:/Users/RaviB/GitHub/vegan-ai-nutritionist/mlflow/endpoints.db"
+            )
+            endpoint_name = latest_endpoint['endpoint_name']            
         
         self.aws_connector = AWSConnector()
         self.aws_credentials = AWSConfigCredentials.load()

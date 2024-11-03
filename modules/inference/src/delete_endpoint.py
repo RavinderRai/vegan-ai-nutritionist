@@ -6,7 +6,7 @@ from ...utils.utils import AWSConnector
 
 def main():
     """
-    Main function to delete a SageMaker endpoint using the name stored in a JSON file.
+    Main function to delete latest SageMaker endpoint using the name stored in a JSON file.
     """
     logging.basicConfig(level=logging.INFO)
     

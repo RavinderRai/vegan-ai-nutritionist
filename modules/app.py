@@ -81,7 +81,10 @@ def embed_query(query_text, client):
     bedrock_embeddings=BedrockEmbeddings(model_id="amazon.titan-embed-text-v1", client=client)
     query_embedding = bedrock_embeddings.embed_query(query_text)
     
-    return query_embedding
+    # new error, seems to be a mismatch where 
+    # the query embedding is 1536 but size 384 is expected
+    # truncating the query embedding to 384 for now
+    return query_embedding[:384]
 
 
 def similarity_search(
@@ -159,6 +162,11 @@ def main(index_name):
     st.header("Chat with a Vegan AI Nutritionist.")
     st.subheader("Powered by the latest research at Springer Nature!")
     
+    model_choice = st.sidebar.radio(
+        "Choose a model to chat with:",
+        ("Bedrock Llama LLM", "Fine-tuned Falcon-7B-Instruct LLM")
+    )
+    
     user_query = st.text_input("Ask a question about vegan or plant-based diets:")
     
     if st.button("Submit"):
@@ -180,13 +188,14 @@ def main(index_name):
             prompt = PROMPT_TEMPLATE.format(contexts=contexts, question=user_query)
 
             
-            llm = get_llm(bedrock_client)
-            
-            response = llm(prompt)
+            if model_choice == "Bedrock Llama LLM":
+                llm = get_llm(bedrock_client)
+                response = llm(prompt)
+            else:
+                model_inference = ModelInference()
+                response = model_inference.predict(prompt)
             
             st.write(response)
         
-        
-
 if __name__ == "__main__":
     main(INDEX_NAME)
